@@ -1,5 +1,9 @@
 FROM alpine:latest
 
+ENV CRON_SCHEDULE="0 */6 * * *"
+ENV RETENTION_TIME_DAYS="30"
+ENV BACKUP_ENCRYPTION_KEY="SomeDecryptionKey"
+
 # install sqlite, curl, bash (for script)
 RUN apk add --no-cache \
     sqlite \
@@ -16,7 +20,5 @@ COPY entrypoint.sh /
 # give execution permission to scripts
 RUN chmod +x /entrypoint.sh && \
     chmod +x /backup.sh
-
-ENV CRON_SCHEDULE="0 */6 * * *"
 
 ENTRYPOINT ["/entrypoint.sh"]

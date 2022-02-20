@@ -12,5 +12,8 @@ CRON_SCHEDULE=0 */6 * * *
 
 ## Decrypting Backups
 1. `docker exec -it CONTAINER_ID /bin/bash`
-2. `openssl enc -d -aes256 -salt -pbkdf2 -pass pass:BACKUP_ENCRYPTION_KEY -in /backups/DESIRED_BACKUP_NAME.tar.gz | tar xz -C /backups`
-3. Grab your `db.sqlite3` file from `/host/path/to/backups/tmp/`
+2. `openssl enc -d -aes256 -salt -pbkdf2 -pass pass:BACKUP_ENCRYPTION_KEY -in /backups/DESIRED_BACKUP_NAME.tar.gz | tar xz -C /tmp/`
+3. Stop vaultwarden
+4. Copy over files
+5. Start vaultwarden
+

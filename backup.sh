@@ -6,8 +6,8 @@ find /backups/* -mtime +"${RETENTION_TIME_DAYS}" -exec rm {} \;
 echo "Finished cleaning up old backups"
 
 # create backup filename
-BACKUP_FILE="db.sqlite3_$(date "+%F-%H%M%S")"
-LATEST_BACKUP_FILE="/backups/latest.sqlite3"
+BACKUP_FILE="backup_$(date "+%F-%H%M%S")"
+LATEST_BACKUP_FILE="/backups/latest.tar.gz"
 WORKDIR="/tmp/currBackup"
 
 # Recreate workdir
